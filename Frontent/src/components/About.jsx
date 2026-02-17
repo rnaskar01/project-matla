@@ -10,7 +10,7 @@ const About = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/30"></div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center lg:-mt-58 -mt-18 ">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center lg:-mt-55 -mt-18 ">
 
         {/* Heading */}
         <h2 className="text-3xl sm:text-4xl font-bold font-serif mb-6 text-[#FFF8E7]">

@@ -6,7 +6,7 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // success | error
+  const [status, setStatus] = useState(null);
   const [responseMessage, setResponseMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -32,7 +32,6 @@ const Contact = () => {
 
     setLoading(false);
 
-    // Auto hide message after 4 seconds
     setTimeout(() => {
       setStatus(null);
       setResponseMessage("");
@@ -47,27 +46,27 @@ const Contact = () => {
         backgroundImage: "url('/Image/contact_bg.png')",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start pt-24">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/20"></div>
 
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start pt-24">
         {/* Contact Form */}
         <div className="lg:-mt-80 -mt-90">
-          <h2 className="text-4xl font-serif font-bold mb-6">Contact Us</h2>
+            <h2 className="text-4xl font-serif font-bold mb-6">Contact Us</h2>
           <h3 className="text-lg font-serif">
             Have questions? Reach out to us!
           </h3>
 
-          <form onSubmit={handleSubmit} className="relative z-20">
+          <form onSubmit={handleSubmit}>
             <div className="mt-4 rounded-xl p-8 shadow-lg">
-              {/* Success / Error Message */}
               {status && (
                 <div
                   className={`mb-6 p-4 rounded-lg text-sm font-medium transition-all duration-300
-                    ${
-                      status === "success"
-                        ? "bg-green-100 text-green-700 border border-green-400"
-                        : "bg-red-100 text-red-700 border border-red-400"
-                    }`}
+                  ${
+                    status === "success"
+                      ? "bg-green-100 text-green-700 border border-green-400"
+                      : "bg-red-100 text-red-700 border border-red-400"
+                  }`}
                 >
                   {responseMessage}
                 </div>
@@ -117,11 +116,13 @@ const Contact = () => {
           </form>
         </div>
 
-        {/* Contact Info (unchanged) */}
+        {/* Contact Information */}   
+
         <div className="lg:-mt-40 -mt-8 lg:ml-30">
           <h2 className="text-4xl font-serif font-bold mb-6">
             Contact Information
           </h2>
+
           <div className="flex flex-col gap-2 -mt-2">
             <div className="flex items-center gap-3 text-xl font-serif text-black-800">
               <img src="/Image/icon/mail.png" alt="mail" className="w-7 h-6" />
@@ -143,6 +144,45 @@ const Contact = () => {
                 6 No Jalaberia, Kultali, South 24 Parganas, Sundarbans, West
                 Bengal, India, 743338
               </span>
+            </div>
+
+            {/* Social Media */}
+            <div className="mt-8">
+              <h3 className="text-2xl font-serif font-semibold mb-4">
+                Follow Us
+              </h3>
+
+              <div className="flex items-center gap-6">
+                <a
+                  href="https://www.facebook.com/share/18F4HyhMYB/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full border border-gray-300 
+                  hover:bg-red-600 hover:border-red-600 
+                  transition-all duration-300 group"
+                >
+                  <img
+                    src="/Image/icon/fb.png"
+                    alt="Facebook"
+                    className="w-6 h-6 group-hover:brightness-0 group-hover:invert"
+                  />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/matlaagro?igsh=MW5jdWxzZ3BqYTNpZA==&utm_source=ig_contact_invite"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full border border-gray-300 
+                  hover:bg-red-600 hover:border-red-600 
+                  transition-all duration-300 group"
+                >
+                  <img
+                    src="/Image/icon/insta.png"
+                    alt="Instagram"
+                    className="w-6 h-6 group-hover:brightness-0 group-hover:invert"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
