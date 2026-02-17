@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-[#3A583C];
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
