@@ -28,9 +28,7 @@ const HeroSlider = () => {
   };
 
   const prevSlide = () => {
-    setCurrent((prev) =>
-      prev === 0 ? banners.length - 1 : prev - 1
-    );
+    setCurrent((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
     resetAutoSlide();
   };
 
@@ -56,7 +54,7 @@ const HeroSlider = () => {
       {banners.map((banner, index) => (
         <div
           key={banner.id}
-          className={`absolute inset-0 w-full h-full lg:bg-center bg-[position:89%_center] transition-opacity duration-1000 ${
+          className={`absolute inset-0 w-full lg:bg-center bg-[position:89%_center] transition-opacity duration-1000 ${
             index === current ? "opacity-100 z-10" : "opacity-0"
           }`}
           style={{
@@ -65,13 +63,11 @@ const HeroSlider = () => {
           }}
         >
           {/* Overlay */}
-          <div className="min-h-screen bg-black/50 flex items-center">
+          <div className="min-h-screen bg-black/20 flex items-center">
             <div className="w-full">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-white">
-                
                 {/* Content */}
                 <div className="max-w-xl text-center lg:text-left sm:text-left">
-                  
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                     {banner.title}
                   </h1>
@@ -90,7 +86,6 @@ const HeroSlider = () => {
                   >
                     Contact Us
                   </a>
-
                 </div>
               </div>
             </div>

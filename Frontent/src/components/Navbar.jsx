@@ -24,8 +24,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full mt-2 z-50 bg-white/90 backdrop-blur shadow-sm transition-transform duration-300 ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 left-0 w-full mt-2 z-50 bg-white/90 backdrop-blur shadow-sm  transition-transform duration-300 ${
+        showNavbar ? "translate-y-0 overflow-visible" : "-translate-y-full overflow-hidden"
       }`}
     >
       <div className="max-w-7xl mx-auto h-20 flex justify-between items-center px-6">

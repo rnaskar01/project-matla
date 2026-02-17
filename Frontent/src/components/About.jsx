@@ -30,7 +30,7 @@ const About = () => {
         </p>
 
         {/* Icons Section */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-8">
+        <div className="flex flex-col sm:flex-row lg:-mt-1 -mt-10 justify-center items-center lg:gap-20 gap-7">
 
           {/* Item 1 */}
           <div className="flex flex-col items-center">
@@ -45,14 +45,14 @@ const About = () => {
           </div>
 
           {/* Divider (Only Desktop) */}
-          <div className="hidden sm:block h-20 w-px bg-gray-300"></div>
+          <div className="hidden sm:block h-20 w-px0"></div>
 
           {/* Item 2 */}
           <div className="flex flex-col items-center">
             <img
               src="/Image/icon/ico_2.png"
               alt="Hygienic Production"
-              className="h-30 mb-4 lg:-mt-10 "
+              className="h-30 mb-4 lg:-mt-10 brightness-95"
             />
             <p className="text-gray-900  font-semibold text-base sm:text-lg text-center whitespace-nowrap lg:-mt-10 -mt-10">
               Hygienic Production
@@ -60,7 +60,7 @@ const About = () => {
           </div>
 
           {/* Divider (Only Desktop) */}
-          <div className="hidden sm:block h-20 w-px bg-gray-300"></div>
+          <div className="hidden sm:block h-20 w-px"></div>
 
           {/* Item 3 */}
           <div className="flex flex-col items-center">

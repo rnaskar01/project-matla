@@ -57,8 +57,8 @@ const Contact = () => {
             Have questions? Reach out to us!
           </h3>
 
-          <form onSubmit={handleSubmit}>
-            <div className="mt-4 border border-gray-300 rounded-xl p-8 shadow-lg">
+          <form onSubmit={handleSubmit} className="relative z-20">
+            <div className="mt-4 rounded-xl p-8 shadow-lg">
               {/* Success / Error Message */}
               {status && (
                 <div
@@ -123,17 +123,17 @@ const Contact = () => {
             Contact Information
           </h2>
           <div className="flex flex-col gap-2 -mt-2">
-            <div className="flex items-center gap-3 text-lg font-serif text-black-800">
+            <div className="flex items-center gap-3 text-xl font-serif text-black-800">
               <img src="/Image/icon/mail.png" alt="mail" className="w-7 h-6" />
               <span>matlafoods@gmail.com</span>
             </div>
 
-            <div className="flex items-center gap-3 text-lg font-serif">
+            <div className="flex items-center gap-3 text-xl font-serif">
               <img src="/Image/icon/call.png" alt="call" className="w-5 h-4" />
               <span>+91 8617505480</span>
             </div>
 
-            <div className="flex items-center gap-3 text-lg font-serif text-black-900">
+            <div className="flex items-center gap-3 text-xl font-serif text-black-900">
               <img
                 src="/Image/icon/landmark.png"
                 alt="location"

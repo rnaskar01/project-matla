@@ -29,9 +29,9 @@ const OurProduct = () => {
       <img
         src="/Image/product-3.png"
         alt="Matla Tomato Ketchup"
-        className="absolute lg:-bottom-20 -bottom-15  lg:right-50 right-5 
+        className="absolute lg:-bottom-25 -bottom-15  lg:right-50 right-5 
                    w-[300px] lg:w-[520px] 
-                   object-contain drop-shadow-2xl scale-110"
+                   object-contain drop-shadow-2xl scale-110 brightness-75"
       />
     </section>
   );
