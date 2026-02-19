@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/contact", async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email,whatsapp, message } = req.body;
 
   // Basic validation
   if (!name || !email || !message) {
@@ -36,6 +36,7 @@ app.post("/contact", async (req, res) => {
         <h2>New Message</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Email:</strong> ${whatsapp}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,

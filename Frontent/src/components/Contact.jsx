@@ -4,6 +4,7 @@ import { sendContactMessage } from "../api/contactapi";
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
@@ -15,13 +16,30 @@ const Contact = () => {
     setStatus(null);
 
     try {
-      await sendContactMessage({ name, email, message });
+      // Save to Google Sheet
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzxeU7kWLVuiAnNttZU_pfb3zdGgMNzcGM3wvIBrI1nhUwbGxLfHF4jIV0_OAXsd2R5SA/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify({
+            name,
+            email,
+            whatsapp,
+            message,
+          }),
+        },
+      );
+
+      // Save to backend (if using)
+      await sendContactMessage({ name, email, whatsapp, message });
 
       setStatus("success");
       setResponseMessage("Your message has been sent successfully ✅");
 
       setName("");
       setEmail("");
+      setWhatsapp("");
       setMessage("");
     } catch (error) {
       setStatus("error");
@@ -52,7 +70,7 @@ const Contact = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start pt-24">
         {/* Contact Form */}
         <div className="lg:-mt-80 -mt-90">
-            <h2 className="text-4xl font-serif font-bold mb-6">Contact Us</h2>
+          <h2 className="text-4xl font-serif font-bold mb-6">Contact Us</h2>
           <h3 className="text-lg font-serif">
             Have questions? Reach out to us!
           </h3>
@@ -61,8 +79,7 @@ const Contact = () => {
             <div className="mt-4 rounded-xl p-8 shadow-lg">
               {status && (
                 <div
-                  className={`mb-6 p-4 rounded-lg text-sm font-medium transition-all duration-300
-                  ${
+                  className={`mb-6 p-4 rounded-lg text-sm font-medium transition-all duration-300 ${
                     status === "success"
                       ? "bg-green-100 text-green-700 border border-green-400"
                       : "bg-red-100 text-red-700 border border-red-400"
@@ -92,6 +109,16 @@ const Contact = () => {
                 required
               />
 
+              <input
+                type="tel"
+                value={whatsapp}
+                onChange={(e) => setWhatsapp(e.target.value)}
+                className="w-full bg-transparent border-b border-gray-400 py-3 mb-6 
+                focus:outline-none focus:border-red-600 transition-all duration-300"
+                placeholder="WhatsApp Number"
+                required
+              />
+
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -116,15 +143,14 @@ const Contact = () => {
           </form>
         </div>
 
-        {/* Contact Information */}   
-
-        <div className="lg:-mt-40 -mt-8 lg:ml-30">
+        {/* Contact Information */}
+        <div className="lg:-mt-30 -mt-8 lg:ml-30">
           <h2 className="text-4xl font-serif font-bold mb-6">
             Contact Information
           </h2>
 
           <div className="flex flex-col gap-2 -mt-2">
-            <div className="flex items-center gap-3 text-xl font-serif text-black-800">
+            <div className="flex items-center gap-3 text-xl font-serif">
               <img src="/Image/icon/mail.png" alt="mail" className="w-7 h-6" />
               <span>matlafoods@gmail.com</span>
             </div>
@@ -134,7 +160,7 @@ const Contact = () => {
               <span>+91 8617505480</span>
             </div>
 
-            <div className="flex items-center gap-3 text-xl font-serif text-black-900">
+            <div className="flex items-center gap-3 text-xl font-serif">
               <img
                 src="/Image/icon/landmark.png"
                 alt="location"
@@ -169,7 +195,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="https://www.instagram.com/matlaagro?igsh=MW5jdWxzZ3BqYTNpZA==&utm_source=ig_contact_invite"
+                  href="https://www.instagram.com/matlaagro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full border border-gray-300 
