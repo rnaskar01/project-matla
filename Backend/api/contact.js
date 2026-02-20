@@ -77,6 +77,13 @@ export default async function handler(req, res) {
           </div>
         </div>
       `,
+      attachments: [
+        {
+          filename: "logo.png",
+          path: path.join(__dirname, "dist", "Image", "logo.png"),
+          cid: "matlalogo",
+        },
+      ],
     });
 
     return res.status(200).json({ message: "Emails sent successfully!" });
