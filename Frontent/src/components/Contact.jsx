@@ -1,5 +1,13 @@
 import { useState } from "react";
 import { sendContactMessage } from "../api/contactapi";
+import contact_bg from "../../public/Image/contact_bg.png"
+import fb from "../../public/Image/icon/fb.png"
+import insta from "../../public/Image/icon/insta.png"
+import call from "../../public/Image/icon/call.png"
+import mail from "../../public/Image/icon/mail.png"
+import land from "../../public/Image/icon/landmark.png"
+
+
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -9,6 +17,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
   const [responseMessage, setResponseMessage] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +27,7 @@ const Contact = () => {
     try {
       // Save to Google Sheet
       await fetch(
-        "https://script.google.com/macros/s/AKfycbzxeU7kWLVuiAnNttZU_pfb3zdGgMNzcGM3wvIBrI1nhUwbGxLfHF4jIV0_OAXsd2R5SA/exec",
+        "https://script.google.com/macros/s/AKfycbxWgwKzN1w-KGgcH8jiL8ugEGrkbso01rJFtDWZ4DaKW_-m7QchbgOIJotu7DcOUEzyHA/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -31,12 +40,11 @@ const Contact = () => {
         },
       );
 
-      // Save to backend (if using)
+      // Save to backend
       await sendContactMessage({ name, email, whatsapp, message });
 
       setStatus("success");
-      setResponseMessage("Your message has been sent successfully ✅");
-
+      setShowSuccess(true);
       setName("");
       setEmail("");
       setWhatsapp("");
@@ -50,10 +58,10 @@ const Contact = () => {
 
     setLoading(false);
 
+    setShowSuccess(true);
     setTimeout(() => {
-      setStatus(null);
-      setResponseMessage("");
-    }, 4000);
+      setShowSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -61,7 +69,7 @@ const Contact = () => {
       id="contact"
       className="relative bg-cover lg:bg-center bg-[position:75%_center] py-70 mt-2"
       style={{
-        backgroundImage: "url('/Image/contact_bg.png')",
+        backgroundImage: `url(${contact_bg})`,
       }}
     >
       {/* Dark Overlay */}
@@ -77,18 +85,6 @@ const Contact = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="mt-4 rounded-xl p-8 shadow-lg">
-              {status && (
-                <div
-                  className={`mb-6 p-4 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    status === "success"
-                      ? "bg-green-100 text-green-700 border border-green-400"
-                      : "bg-red-100 text-red-700 border border-red-400"
-                  }`}
-                >
-                  {responseMessage}
-                </div>
-              )}
-
               <input
                 type="text"
                 value={name}
@@ -151,18 +147,18 @@ const Contact = () => {
 
           <div className="flex flex-col gap-2 -mt-2">
             <div className="flex items-center gap-3 text-xl font-serif">
-              <img src="/Image/icon/mail.png" alt="mail" className="w-7 h-6" />
+              <img src={mail} alt="mail" className="w-7 h-6" />
               <span>matlafoods@gmail.com</span>
             </div>
 
             <div className="flex items-center gap-3 text-xl font-serif">
-              <img src="/Image/icon/call.png" alt="call" className="w-5 h-4" />
-              <span>+91 8617505480</span>
+              <img src={call} alt="call" className="w-5 h-4" />
+              <span>+91 8617505480 / +91 9433703604</span>
             </div>
 
             <div className="flex items-center gap-3 text-xl font-serif">
               <img
-                src="/Image/icon/landmark.png"
+                src={land}
                 alt="location"
                 className="w-5 h-5 lg:-mt-6 -mt-10"
               />
@@ -188,7 +184,7 @@ const Contact = () => {
                   transition-all duration-300 group"
                 >
                   <img
-                    src="/Image/icon/fb.png"
+                    src={fb}
                     alt="Facebook"
                     className="w-6 h-6 group-hover:brightness-0 group-hover:invert"
                   />
@@ -203,7 +199,7 @@ const Contact = () => {
                   transition-all duration-300 group"
                 >
                   <img
-                    src="/Image/icon/insta.png"
+                    src={insta}
                     alt="Instagram"
                     className="w-6 h-6 group-hover:brightness-0 group-hover:invert"
                   />
@@ -213,6 +209,45 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {showSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 w-80 text-center animate-scaleIn">
+            {/* Success Icon */}
+            <div className="flex justify-center mb-4">
+              <div className="bg-green-100 rounded-full p-4">
+                <svg
+                  className="w-10 h-10 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* Message */}
+            <h3 className="text-xl font-semibold mb-2">Success!</h3>
+            <p className="text-gray-600 mb-6">
+              Your message has been sent successfully.
+            </p>
+
+            {/* Button */}
+            <button
+              onClick={() => setShowSuccess(false)}
+              className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

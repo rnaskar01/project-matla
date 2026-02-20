@@ -6,15 +6,15 @@ const path = require("path");
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/contact", async (req, res) => {
-  const { name, email,whatsapp, message } = req.body;
+  const { name, email, whatsapp, message } = req.body;
 
   // Basic validation
-  if (!name || !email || !message) {
+  if (!name || !email || !whatsapp || !message) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -36,13 +36,13 @@ app.post("/contact", async (req, res) => {
         <h2>New Message</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Email:</strong> ${whatsapp}</p>
+        <p><strong>whatsapp:</strong> ${whatsapp}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
     });
 
-    // 2️⃣ Thank You Mail to Customer (WITH LOGO ATTACHMENT)
+    // 2️⃣ Thank You Mail to Customer
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
@@ -72,9 +72,10 @@ app.post("/contact", async (req, res) => {
 
             <br/>
 
-            <p style="text-align:left;">
+            <p style="text-align:left;white-space:nowrap;">
               Warm regards,<br/>
               <strong>Team MATLA</strong><br/>
+              Phone: +91 8617505480 / +91 9433703604<br/>
             </p>
 
           </div>
@@ -83,7 +84,7 @@ app.post("/contact", async (req, res) => {
       attachments: [
         {
           filename: "logo.png",
-          path: path.join(__dirname, "../Frontent/Image/logo.png"),
+          path: path.join(__dirname, "dist", "Image", "logo.png"),
           cid: "matlalogo",
         },
       ],
@@ -94,6 +95,12 @@ app.post("/contact", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Something went wrong!" });
   }
+});
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 app.listen(5000, () => {

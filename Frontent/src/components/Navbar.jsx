@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "../../public/Image/logo.png"
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -34,7 +35,7 @@ const Navbar = () => {
         <div className="h-full flex items-center">
           <a href="#home">
             <img
-              src="/Image/logo.png"
+              src={logo}
               alt="Matla logo"
               className="lg:h-30 h-18 w-auto scale-125 lg:translate-y-6 origin-left"
             />

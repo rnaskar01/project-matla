@@ -1,4 +1,6 @@
 import React from "react";
+import backbg from "../../public/Image/product_sec_back.png"
+import product from "../../public/Image/product-3.png"
 
 const OurProduct = () => {
   return (
@@ -6,7 +8,7 @@ const OurProduct = () => {
       id="product"
       className="relative bg-cover bg-center lg:py-70 py-90 sm:min-h-screen mt-2 "
       style={{
-        backgroundImage: "url('/Image/product_sec_back.png')",
+        backgroundImage:`url(${backbg})`,
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -27,7 +29,7 @@ const OurProduct = () => {
 
       {/* Product Image Bottom Right */}
       <img
-        src="/Image/product-3.png"
+        src={product}
         alt="Matla Tomato Ketchup"
         className="absolute lg:-bottom-25 -bottom-15  lg:right-50 right-5 
                    w-[300px] lg:w-[520px] 

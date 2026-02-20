@@ -1,10 +1,16 @@
+import Aboutimg from "../../public/Image/About.png"
+import ico1 from "../../public/Image/icon/ico_1.png"
+import ico2 from "../../public/Image/icon/ico_2.png"
+import ico3 from "../../public/Image/icon/ico_3.png"
+
+
 const About = () => {
   return (
     <section
       id="about"
       className="relative w-full min-h-screen bg-cover bg-center py-20 md:py-40 lg:py-60 mt-2"
       style={{
-        backgroundImage: "url('/Image/About.png')",
+        backgroundImage:`url(${Aboutimg})`,
       }}
     >
       {/* Overlay */}
@@ -35,7 +41,7 @@ const About = () => {
           {/* Item 1 */}
           <div className="flex flex-col items-center">
             <img
-              src="/Image/icon/ico_1.png"
+              src={ico1}
               alt="Farm Fresh"
               className="h-30 mb-4 lg:-mt-10"
             />
@@ -50,7 +56,7 @@ const About = () => {
           {/* Item 2 */}
           <div className="flex flex-col items-center">
             <img
-              src="/Image/icon/ico_2.png"
+              src={ico2}
               alt="Hygienic Production"
               className="h-30 mb-4 lg:-mt-10 brightness-95"
             />
@@ -65,7 +71,7 @@ const About = () => {
           {/* Item 3 */}
           <div className="flex flex-col items-center">
             <img
-              src="/Image/icon/ico_3.png"
+              src={ico3}
               alt="No Preservatives"
               className="h-30 mb-4 lg:-mt-10"
             />
