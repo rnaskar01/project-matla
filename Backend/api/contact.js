@@ -1,16 +1,11 @@
+import nodemailer from "nodemailer";
 require("dotenv").config();
-const express = require("express");
-const nodemailer = require("nodemailer");
-const cors = require("cors");
-const path = require("path");
 
-const app = express();
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
 
-// app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.post("/contact", async (req, res) => {
   const { name, email, whatsapp, message } = req.body;
 
   // Basic validation
@@ -27,7 +22,7 @@ app.post("/contact", async (req, res) => {
       },
     });
 
-    // 1️⃣ Mail to Company
+    // Mail to company
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
@@ -36,19 +31,19 @@ app.post("/contact", async (req, res) => {
         <h2>New Message</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>whatsapp:</strong> ${whatsapp}</p>
+        <p><strong>WhatsApp:</strong> ${whatsapp}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
     });
 
-    // 2️⃣ Thank You Mail to Customer
+    // Thank you mail
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Thank You for Contacting MATLA",
       html: `
-        <div style="background:#f4f4f4; padding:30px; font-family:Arial, sans-serif;">
+        <        <div style="background:#f4f4f4; padding:30px; font-family:Arial, sans-serif;">
           <div style="max-width:600px; margin:auto; background:#ffffff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center;">
 
             <img src="cid:matlalogo" width="120" style="margin-bottom:20px;" />
@@ -82,28 +77,11 @@ app.post("/contact", async (req, res) => {
           </div>
         </div>
       `,
-      attachments: [
-        {
-          filename: "logo.png",
-          path: path.join(__dirname, "dist", "Image", "logo.png"),
-          cid: "matlalogo",
-        },
-      ],
     });
 
-    res.status(200).json({ message: "Emails sent successfully!" });
+    return res.status(200).json({ message: "Emails sent successfully!" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Something went wrong!" });
+    return res.status(500).json({ message: "Something went wrong!" });
   }
-});
-
-app.use(express.static(path.join(__dirname, "dist")));
-
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
-
-// app.listen(5000, () => {
-//   console.log("Server running on port 5000");
-// });
+}
