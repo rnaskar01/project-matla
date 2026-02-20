@@ -49,45 +49,38 @@ app.post("/contact", async (req, res) => {
       subject: "Thank You for Contacting MATLA",
       html: `
         <div style="background:#f4f4f4; padding:30px; font-family:Arial, sans-serif;">
-  <div style="max-width:600px; margin:auto; background:#ffffff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center;">
+          <div style="max-width:600px; margin:auto; background:#ffffff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center;">
 
-    <img src="cid:matlalogo" width="120" style="margin-bottom:20px;" />
+            <img src="cid:matlalogo" width="120" style="margin-bottom:20px;" />
 
-    <h2 style="color:#8B0000;">Thank You for Contacting MATLA</h2>
+            <h2 style="color:#8B0000;">Thank You for Contacting MATLA</h2>
 
-    <p style="text-align:left;">Dear <strong>${name}</strong>,</p>
+            <p style="text-align:left;">Dear <strong>${name}</strong>,</p>
 
-    <p style="text-align:left;">
-      We sincerely appreciate you reaching out to us.
-      Your message has been successfully received.
-    </p>
+            <p style="text-align:left;">
+              We sincerely appreciate you reaching out to us.
+              Your message has been successfully received.
+            </p>
 
-    <p style="text-align:left;">
-      Our team will review it carefully and respond within <strong>24 hours</strong>.
-    </p>
+            <p style="text-align:left;">
+              Our team will review it carefully and respond within <strong>24 hours</strong>.
+            </p>
 
-    <p style="text-align:left;">
-      At MATLA, we are committed to delivering quality and building meaningful connections.
-    </p>
+            <p style="text-align:left;">
+              At MATLA, we are committed to delivering quality and building meaningful connections.
+            </p>
 
-    <br/>
+            <br/>
 
-    <p style="text-align:left; line-height:1.6;">
-      Warm regards,<br/>
-      <strong>Team MATLA</strong><br/>
-      Phone:
-      <a href="tel:+918617505480" style="color:#000; text-decoration:none;">
-        +91 8617505480
-      </a>
-      /
-      <br/>
-      <a href="tel:+919433703604" style="color:#000; text-decoration:none;">
-        +91 9433703604
-      </a>
-    </p>
+            <p style="text-align:left;white-space:nowrap;">
+              Warm regards,<br/>
+              <strong>Team MATLA</strong><br/>
+              Phone: +91 8617505480 / <br/>
+              +91 9433703604<br/>
+            </p>
 
-  </div>
-</div>
+          </div>
+        </div>
       `,
       attachments: [
         {
