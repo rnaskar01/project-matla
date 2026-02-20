@@ -2,7 +2,7 @@
 // const API_URL ="http://localhost:5000";
 
 export const sendContactMessage = async (formData) => {
-  const response = await fetch("/api/contact", {
+  const response = await fetch("/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

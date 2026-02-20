@@ -1,11 +1,16 @@
-import nodemailer from "nodemailer";
 require("dotenv").config();
+const express = require("express");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
+const path = require("path");
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
+const app = express();
 
+// app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/contact", async (req, res) => {
   const { name, email, whatsapp, message } = req.body;
 
   // Basic validation
@@ -22,7 +27,7 @@ export default async function handler(req, res) {
       },
     });
 
-    // Mail to company
+    // 1️⃣ Mail to Company
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
@@ -31,19 +36,19 @@ export default async function handler(req, res) {
         <h2>New Message</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>WhatsApp:</strong> ${whatsapp}</p>
+        <p><strong>whatsapp:</strong> ${whatsapp}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
     });
 
-    // Thank you mail
+    // 2️⃣ Thank You Mail to Customer
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Thank You for Contacting MATLA",
       html: `
-        <        <div style="background:#f4f4f4; padding:30px; font-family:Arial, sans-serif;">
+      <div style="background:#f4f4f4; padding:30px; font-family:Arial, sans-serif;">
           <div style="max-width:600px; margin:auto; background:#ffffff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center;">
 
             <img src="cid:matlalogo" width="120" style="margin-bottom:20px;" />
@@ -76,6 +81,7 @@ export default async function handler(req, res) {
 
           </div>
         </div>
+
       `,
       attachments: [
         {
@@ -86,9 +92,19 @@ export default async function handler(req, res) {
       ],
     });
 
-    return res.status(200).json({ message: "Emails sent successfully!" });
+    res.status(200).json({ message: "Emails sent successfully!" });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Something went wrong!" });
+    res.status(500).json({ message: "Something went wrong!" });
   }
-}
+});
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
+});
