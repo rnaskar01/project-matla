@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { sendContactMessage } from "../api/contactapi";
+import emailjs from "@emailjs/browser";
 
 // Import your icons
 import mail from "/Image/icon/mail.png";
@@ -14,44 +14,27 @@ const Contact = () => {
   const [whatsapp, setWhatsapp] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null);
-  const [responseMessage, setResponseMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    const templateParams = {
+      name: name,
+      email: email,
+      whatsapp: whatsapp,
+      message: message,
+    };
 
     try {
-      setLoading(true);
-      setStatus(null);
-
-      // Google Script
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbxWgwKzN1w-KGgcH8jiL8ugEGrkbso01rJFtDWZ4DaKW_-m7QchbgOIJotu7DcOUEzyHA/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            whatsapp,
-            message,
-          }),
-        }
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      // Backend API
-      await sendContactMessage({
-        name,
-        email,
-        whatsapp,
-        message,
-      });
-
-      setStatus("success");
       setShowSuccess(true);
 
       // Reset form
@@ -60,8 +43,8 @@ const Contact = () => {
       setWhatsapp("");
       setMessage("");
     } catch (error) {
-      setStatus("error");
-      setResponseMessage(error.message || "Failed to send message.");
+      console.error("EmailJS Error:", error);
+      alert("Failed to send message. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -80,6 +63,7 @@ const Contact = () => {
       <div className="absolute inset-0 bg-black/20 -z-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start pt-24">
+        
         {/* Contact Form */}
         <div className="lg:-mt-80 -mt-90">
           <h2 className="text-4xl font-serif font-bold mb-6">Contact Us</h2>
@@ -89,6 +73,7 @@ const Contact = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="mt-4 rounded-xl p-8 shadow-lg">
+
               <input
                 type="text"
                 value={name}
@@ -136,7 +121,7 @@ const Contact = () => {
           </form>
         </div>
 
-        {/* Contact Info */}
+        {/* Contact Info (unchanged) */}
         <div className="relative z-10 lg:-mt-30 -mt-8 lg:ml-30">
           <h2 className="text-4xl font-serif font-bold mb-6">
             Contact Information
