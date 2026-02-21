@@ -1,6 +1,4 @@
 import React from "react";
-import backbg from "../../public/Image/product_sec_back.png"
-import product from "../../public/Image/product-3.png"
 
 const OurProduct = () => {
   return (
@@ -8,11 +6,11 @@ const OurProduct = () => {
       id="product"
       className="relative bg-cover bg-center lg:py-70 py-90 sm:min-h-screen mt-2 "
       style={{
-        backgroundImage:`url(${backbg})`,
+        backgroundImage: "url('/Image/product_sec_back.png')",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
 
         
         {/* Left Content */}
@@ -28,13 +26,15 @@ const OurProduct = () => {
       </div>
 
       {/* Product Image Bottom Right */}
+      <div>
       <img
-        src={product}
+        src="/Image/product-3.png"
         alt="Matla Tomato Ketchup"
-        className="absolute lg:-bottom-25 -bottom-15  lg:right-50 right-5 
+        className="absolute lg:-bottom-20 -bottom-15  lg:right-50 right-5 
                    w-[300px] lg:w-[520px] 
                    object-contain drop-shadow-2xl scale-110 brightness-75"
       />
+      </div>
     </section>
   );
 };

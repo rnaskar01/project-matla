@@ -6,7 +6,7 @@ const path = require("path");
 
 const app = express();
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -83,10 +83,10 @@ app.post("/contact", async (req, res) => {
         </div>
 
       `,
-      attachments: [
+       attachments: [
         {
           filename: "logo.png",
-          path: path.join(__dirname, "dist", "Image", "logo.png"),
+          path: path.join(__dirname, "../Frontent/Image/logo.png"),
           cid: "matlalogo",
         },
       ],
@@ -99,12 +99,8 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, "dist")));
+const PORT = process.env.PORT || 5000;
 
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
-// app.listen(5000, () => {
-//   console.log("Server running on port 5000");
-// });

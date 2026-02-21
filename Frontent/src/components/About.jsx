@@ -1,22 +1,16 @@
-import Aboutimg from "../../public/Image/About.png"
-import ico1 from "../../public/Image/icon/ico_1.png"
-import ico2 from "../../public/Image/icon/ico_2.png"
-import ico3 from "../../public/Image/icon/ico_3.png"
-
-
 const About = () => {
   return (
     <section
       id="about"
       className="relative w-full min-h-screen bg-cover bg-center py-20 md:py-40 lg:py-60 mt-2"
       style={{
-        backgroundImage:`url(${Aboutimg})`,
+        backgroundImage: "url('/Image/About.png')",
       }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/30"></div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center lg:-mt-55 -mt-18 ">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center lg:-mt-58 -mt-18 ">
 
         {/* Heading */}
         <h2 className="text-3xl sm:text-4xl font-bold font-serif mb-6 text-[#FFF8E7]">
@@ -36,12 +30,12 @@ const About = () => {
         </p>
 
         {/* Icons Section */}
-        <div className="flex flex-col sm:flex-row lg:-mt-1 -mt-10 justify-center items-center lg:gap-20 gap-7">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-8">
 
           {/* Item 1 */}
           <div className="flex flex-col items-center">
             <img
-              src={ico1}
+              src="/Image/icon/ico_1.png"
               alt="Farm Fresh"
               className="h-30 mb-4 lg:-mt-10"
             />
@@ -51,14 +45,14 @@ const About = () => {
           </div>
 
           {/* Divider (Only Desktop) */}
-          <div className="hidden sm:block h-20 w-px0"></div>
+          <div className="hidden sm:block h-20 w-px bg-gray-300"></div>
 
           {/* Item 2 */}
           <div className="flex flex-col items-center">
             <img
-              src={ico2}
+              src="/Image/icon/ico_2.png"
               alt="Hygienic Production"
-              className="h-30 mb-4 lg:-mt-10 brightness-95"
+              className="h-30 mb-4 lg:-mt-10 "
             />
             <p className="text-gray-900  font-semibold text-base sm:text-lg text-center whitespace-nowrap lg:-mt-10 -mt-10">
               Hygienic Production
@@ -66,12 +60,12 @@ const About = () => {
           </div>
 
           {/* Divider (Only Desktop) */}
-          <div className="hidden sm:block h-20 w-px"></div>
+          <div className="hidden sm:block h-20 w-px bg-gray-300"></div>
 
           {/* Item 3 */}
           <div className="flex flex-col items-center">
             <img
-              src={ico3}
+              src="/Image/icon/ico_3.png"
               alt="No Preservatives"
               className="h-30 mb-4 lg:-mt-10"
             />

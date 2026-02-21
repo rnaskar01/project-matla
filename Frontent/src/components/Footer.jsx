@@ -1,4 +1,4 @@
-import ftbg from "../../public/Image/contact_bg.png"
+import ftbg from "../../Image/contact_bg.png"
 
 const Footer = () => {
   return (
