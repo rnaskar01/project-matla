@@ -20,6 +20,23 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
+    await fetch(
+        "https://script.google.com/macros/s/AKfycbxWgwKzN1w-KGgcH8jiL8ugEGrkbso01rJFtDWZ4DaKW_-m7QchbgOIJotu7DcOUEzyHA/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            whatsapp,
+            message,
+          }),
+        }
+      );
+
     const templateParams = {
       name: name,
       email: email,
@@ -113,7 +130,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-red-600 text-white mt-4 px-6 py-3 rounded-lg hover:bg-red-700 disabled:opacity-50"
+                className="bg-red-600 text-white cursor-pointer mt-4 px-6 py-3 rounded-lg hover:bg-red-700 disabled:opacity-50"
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>
