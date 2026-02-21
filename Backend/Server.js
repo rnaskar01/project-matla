@@ -51,8 +51,6 @@ app.post("/contact", async (req, res) => {
       <div style="background:#f4f4f4; padding:30px; font-family:Arial, sans-serif;">
           <div style="max-width:600px; margin:auto; background:#ffffff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center;">
 
-            <img src="cid:matlalogo" width="120" style="margin-bottom:20px;" />
-
             <h2 style="color:#8B0000;">Thank You for Contacting MATLA</h2>
 
             <p style="text-align:left;">Dear <strong>${name}</strong>,</p>
@@ -83,13 +81,13 @@ app.post("/contact", async (req, res) => {
         </div>
 
       `,
-       attachments: [
-        {
-          filename: "logo.png",
-          path: path.join(__dirname, "assets", "logo.png"),
-          cid: "matlalogo",
-        },
-      ],
+      //  attachments: [
+      //   {
+      //     filename: "logo.png",
+      //     path: path.join(__dirname, "assets", "logo.png"),
+      //     cid: "matlalogo",
+      //   },
+      // ],
     });
 
     res.status(200).json({ message: "Emails sent successfully!" });
