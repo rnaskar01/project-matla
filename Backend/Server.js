@@ -86,7 +86,7 @@ app.post("/contact", async (req, res) => {
        attachments: [
         {
           filename: "logo.png",
-          path: path.join(__dirname, "../Frontent/Image/logo.png"),
+          path: path.join(__dirname, "assets", "logo.png"),
           cid: "matlalogo",
         },
       ],

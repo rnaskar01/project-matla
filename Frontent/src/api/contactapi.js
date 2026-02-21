@@ -1,5 +1,5 @@
 
-const API_URL ="http://localhost:5000";
+const API_URL ="https://project-matla.onrender.com";
 
 export const sendContactMessage = async (formData) => {
   const response = await fetch(`${API_URL}/contact`, {
