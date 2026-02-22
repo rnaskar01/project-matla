@@ -5,7 +5,7 @@ const Footer = () => {
     <section 
     className="relative bg-cover bg-center"
     style={{
-        backgroundImage: `url(${ftbg})`,
+        backgroundImage: "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736509/contact_bg_squtej.png')",
       }}>
     <footer className="text-black font-serif font-semibold text-center py-6">
       © 2026 MATLA. All rights reserved.

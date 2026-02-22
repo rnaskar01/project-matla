@@ -6,7 +6,7 @@ const OurProduct = () => {
       id="product"
       className="relative bg-cover bg-center lg:py-70 py-90 sm:min-h-screen mt-2 "
       style={{
-        backgroundImage: "url('/Image/product_sec_back.png')",
+        backgroundImage: "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736418/product_sec_back_osbyty.png')",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -28,7 +28,7 @@ const OurProduct = () => {
       {/* Product Image Bottom Right */}
       <div>
       <img
-        src="/Image/product-3.png"
+        src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736422/product-3_kt2s2w.png"
         alt="Matla Tomato Ketchup"
         className="absolute lg:-bottom-20 -bottom-15  lg:right-50 right-5 
                    w-[300px] lg:w-[520px] 

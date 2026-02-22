@@ -75,7 +75,7 @@ const Contact = () => {
     <section
       id="contact"
       className="relative bg-cover lg:bg-center bg-[position:75%_center] py-70 mt-2"
-      style={{ backgroundImage: "url('/Image/contact_bg.png')" }}
+      style={{ backgroundImage: "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736509/contact_bg_squtej.png')" }}
     >
       <div className="absolute inset-0 bg-black/20 -z-10"></div>
 
@@ -146,17 +146,17 @@ const Contact = () => {
 
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3 text-lg font-serif">
-              <img src={mail} alt="mail" className="w-7 h-6" />
+              <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736102/mail_dpu8lf.png" alt="mail" className="w-7 h-6" />
               <span>matlafoods@gmail.com</span>
             </div>
 
             <div className="flex items-center gap-3 text-lg font-serif">
-              <img src={call} alt="call" className="w-5 h-4" />
+              <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736137/call_oyavtw.png" alt="call" className="w-5 h-4" />
               <span>+91 8617505480 / +91 9433703604</span>
             </div>
 
             <div className="flex items-center gap-3 text-lg font-serif">
-              <img src={land} alt="location" className="w-5 h-5" />
+              <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736110/landmark_dpan5w.png" alt="location" className="w-5 h-5 -mt-8" />
               <span>
                 6 No Jalaberia, Kultali, South 24 Parganas, Sundarbans,
                 West Bengal, India, 743338
@@ -175,7 +175,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="p-3 rounded-full border border-gray-300 hover:bg-red-600 hover:border-red-600"
                 >
-                  <img src={fb} alt="Facebook" className="w-6 h-6" />
+                  <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736128/fb_xphsjc.png" alt="Facebook" className="w-6 h-6" />
                 </a>
 
                 <a
@@ -184,7 +184,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="p-3 rounded-full border border-gray-300 hover:bg-red-600 hover:border-red-600"
                 >
-                  <img src={insta} alt="Instagram" className="w-6 h-6" />
+                  <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736120/insta_fna82s.png" alt="Instagram" className="w-6 h-6" />
                 </a>
               </div>
             </div>

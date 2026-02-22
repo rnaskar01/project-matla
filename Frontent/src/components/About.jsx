@@ -4,7 +4,7 @@ const About = () => {
       id="about"
       className="relative w-full min-h-screen bg-cover bg-center py-20 md:py-40 lg:py-60 mt-2"
       style={{
-        backgroundImage: "url('/Image/About.png')",
+        backgroundImage: "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736073/About_e7o3ga.png')",
       }}
     >
       {/* Overlay */}
@@ -35,7 +35,7 @@ const About = () => {
           {/* Item 1 */}
           <div className="flex flex-col items-center">
             <img
-              src="/Image/icon/ico_1.png"
+              src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736076/ico_1_kwncs1.png"
               alt="Farm Fresh"
               className="h-30 mb-4 lg:-mt-10"
             />
@@ -50,7 +50,7 @@ const About = () => {
           {/* Item 2 */}
           <div className="flex flex-col items-center">
             <img
-              src="/Image/icon/ico_2.png"
+              src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736084/ico_2_s16hes.png"
               alt="Hygienic Production"
               className="h-30 mb-4 lg:-mt-10 "
             />
@@ -65,7 +65,7 @@ const About = () => {
           {/* Item 3 */}
           <div className="flex flex-col items-center">
             <img
-              src="/Image/icon/ico_3.png"
+              src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736092/ico_3_hbuvzq.png"
               alt="No Preservatives"
               className="h-30 mb-4 lg:-mt-10"
             />

@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full mt-2 z-50 bg-white/90 backdrop-blur shadow-sm  transition-transform duration-300 ${
+      className={`fixed top-0 left-0 lg:h-20 h-15 w-full mt-2 z-50 bg-white/90 backdrop-blur shadow-sm  transition-transform duration-300 ${
         showNavbar ? "translate-y-0 overflow-visible" : "-translate-y-full overflow-hidden"
       }`}
     >
@@ -34,9 +34,9 @@ const Navbar = () => {
         <div className="h-full flex items-center">
           <a href="#home">
             <img
-              src="/Image/logo.png"
+              src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771694800/logo_eprs8r.png"
               alt="Matla logo"
-              className="lg:h-30 h-18 w-auto scale-125 lg:translate-y-6 origin-left"
+              className="lg:h-30 h-20 w-auto scale-125 lg:translate-y-6 translate-y-2 origin-left"
             />
           </a>
         </div>
