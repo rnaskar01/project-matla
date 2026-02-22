@@ -21,21 +21,21 @@ const Contact = () => {
     setLoading(true);
 
     await fetch(
-        "https://script.google.com/macros/s/AKfycbxWgwKzN1w-KGgcH8jiL8ugEGrkbso01rJFtDWZ4DaKW_-m7QchbgOIJotu7DcOUEzyHA/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            whatsapp,
-            message,
-          }),
-        }
-      );
+      "https://script.google.com/macros/s/AKfycbxWgwKzN1w-KGgcH8jiL8ugEGrkbso01rJFtDWZ4DaKW_-m7QchbgOIJotu7DcOUEzyHA/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          whatsapp,
+          message,
+        }),
+      },
+    );
 
     const templateParams = {
       name: name,
@@ -49,7 +49,7 @@ const Contact = () => {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
       setShowSuccess(true);
@@ -75,12 +75,14 @@ const Contact = () => {
     <section
       id="contact"
       className="relative bg-cover lg:bg-center bg-[position:75%_center] py-70 mt-2"
-      style={{ backgroundImage: "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736509/contact_bg_squtej.png')" }}
+      style={{
+        backgroundImage:
+          "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736509/contact_bg_squtej.png')",
+      }}
     >
       <div className="absolute inset-0 bg-black/20 -z-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start pt-24">
-        
         {/* Contact Form */}
         <div className="lg:-mt-80 -mt-90">
           <h2 className="text-4xl font-serif font-bold mb-6">Contact Us</h2>
@@ -90,7 +92,6 @@ const Contact = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="mt-4 rounded-xl p-8 shadow-lg">
-
               <input
                 type="text"
                 value={name}
@@ -105,6 +106,7 @@ const Contact = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
+                title="Enter a valid email address (example: name@example.com)"
                 required
                 className="w-full bg-transparent border-b border-gray-400 py-3 mb-6 focus:outline-none focus:border-red-600"
               />
@@ -114,6 +116,8 @@ const Contact = () => {
                 value={whatsapp}
                 onChange={(e) => setWhatsapp(e.target.value)}
                 placeholder="WhatsApp Number"
+                pattern="^(\+91|91)?[6-9][0-9]{9}$"
+                title="Enter valid Indian mobile number"
                 required
                 className="w-full bg-transparent border-b border-gray-400 py-3 mb-6 focus:outline-none focus:border-red-600"
               />
@@ -146,20 +150,32 @@ const Contact = () => {
 
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3 text-lg font-serif">
-              <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736102/mail_dpu8lf.png" alt="mail" className="w-7 h-6" />
+              <img
+                src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736102/mail_dpu8lf.png"
+                alt="mail"
+                className="w-7 h-6"
+              />
               <span>matlafoods@gmail.com</span>
             </div>
 
             <div className="flex items-center gap-3 text-lg font-serif">
-              <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736137/call_oyavtw.png" alt="call" className="w-5 h-4" />
+              <img
+                src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736137/call_oyavtw.png"
+                alt="call"
+                className="w-5 h-4"
+              />
               <span>+91 8617505480 / +91 9433703604</span>
             </div>
 
             <div className="flex items-center gap-3 text-lg font-serif">
-              <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736110/landmark_dpan5w.png" alt="location" className="w-5 h-5 -mt-8" />
+              <img
+                src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736110/landmark_dpan5w.png"
+                alt="location"
+                className="w-5 h-5 -mt-8"
+              />
               <span>
-                6 No Jalaberia, Kultali, South 24 Parganas, Sundarbans,
-                West Bengal, India, 743338
+                6 No Jalaberia, Kultali, South 24 Parganas, Sundarbans, West
+                Bengal, India, 743338
               </span>
             </div>
 
@@ -175,7 +191,11 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="p-3 rounded-full border border-gray-300 hover:bg-red-600 hover:border-red-600"
                 >
-                  <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736128/fb_xphsjc.png" alt="Facebook" className="w-6 h-6" />
+                  <img
+                    src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736128/fb_xphsjc.png"
+                    alt="Facebook"
+                    className="w-6 h-6"
+                  />
                 </a>
 
                 <a
@@ -184,7 +204,11 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="p-3 rounded-full border border-gray-300 hover:bg-red-600 hover:border-red-600"
                 >
-                  <img src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736120/insta_fna82s.png" alt="Instagram" className="w-6 h-6" />
+                  <img
+                    src="https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736120/insta_fna82s.png"
+                    alt="Instagram"
+                    className="w-6 h-6"
+                  />
                 </a>
               </div>
             </div>
