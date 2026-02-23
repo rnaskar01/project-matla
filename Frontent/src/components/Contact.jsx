@@ -1,13 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
-// Import your icons
-import mail from "/Image/icon/mail.png";
-import call from "/Image/icon/call.png";
-import land from "/Image/icon/landmark.png";
-import fb from "/Image/icon/fb.png";
-import insta from "/Image/icon/insta.png";
-
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -74,12 +67,14 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative bg-cover lg:bg-center bg-[position:75%_center] py-70 mt-2"
+      className="relative bg-cover bg-center py-70 mt-2"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736509/contact_bg_squtej.png')",
+          "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771870593/contact_try_11zon_1_beuovn.jpg')",
       }}
     >
+
+      {/* https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736509/contact_bg_squtej.png */}
       <div className="absolute inset-0 bg-black/20 -z-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start pt-24">

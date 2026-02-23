@@ -4,7 +4,7 @@ const OurProduct = () => {
   return (
     <section
       id="product"
-      className="relative bg-cover bg-center lg:py-70 py-90 sm:min-h-screen mt-2 "
+      className="relative bg-cover bg-center lg:py-70 py-90 min-h-[90vh] xl:min-h-screen sm:min-h-screen mt-2 "
       style={{
         backgroundImage: "url('https://res.cloudinary.com/dnjqdkm8s/image/upload/v1771736418/product_sec_back_osbyty.png')",
       }}

@@ -49,7 +49,7 @@ const HeroSlider = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen overflow-hidden"
+      className="relative w-full min-h-[90vh] xl:min-h-screen overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
